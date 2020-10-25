@@ -1,0 +1,104 @@
+extends menu
+
+block market_view
+  .row
+    .col-md-12  
+      .card.border-primary.mb-3
+        .card-header.bg-primary.text-white
+          strong #{settings.locale.birake} - #{marketdata.coin}/#{marketdata.exchange} - #{settings.locale.mkt_hours}
+          a(href='#')
+            span.fa.fa-line-chart.pull-right.view-chart-disabled.iquidus.market-toggle(data-toggle='tooltip', data-placement='bottom', title='#{settings.locale.mkt_no_chart}') 
+        table.table.table-bordered.summary-table 
+          thead
+            tr
+              th.hidden-xs #{settings.locale.mkt_top_bid}
+              th.hidden-xs #{settings.locale.mkt_top_ask}
+              th.hidden-xs #{settings.locale.mkt_last}
+          tbody
+            tr
+              td.hidden-xs #{marketdata.data.summary.highestBid}
+              td.hidden-xs #{marketdata.data.summary.lowestAsk}
+              td.hidden-xs #{marketdata.data.summary.lastPrice}
+  .row
+    .col-md-6.col-xs-12
+      .card.border-primary.mb-3
+        .card-header.bg-primary.text-white
+          h3.card-title #{settings.locale.mkt_buy_orders}
+        table.table.table-striped.table-bordered.order-table
+          thead
+            tr
+              th #{settings.locale.mkt_price} (#{marketdata.exchange})
+              th #{settings.locale.mkt_amount} (#{marketdata.coin})
+              th.hidden-xs #{settings.locale.mkt_total} (#{marketdata.exchange})
+          tbody
+            each buy in marketdata.data.buys
+              tr
+                td
+                  =buy['price']
+                td
+                  =buy['amount']
+                td.hidden-xs
+                  - var total = buy['price'] * buy['amount'];
+                  =total.toFixed(8)
+    .col-md-6.col-xs-12
+      .card.border-primary.mb-3
+        .card-header.bg-primary.text-white
+          h3.card-title #{settings.locale.mkt_sell_orders}
+        table.table.table-striped.table-bordered.order-table
+          thead
+            tr
+              th #{settings.locale.mkt_price} (#{marketdata.exchange})
+              th #{settings.locale.mkt_amount} (#{marketdata.coin})
+              th.hidden-xs #{settings.locale.mkt_total} (#{marketdata.exchange})
+          tbody
+            each sell in marketdata.data.sells
+              tr
+                td
+                  =sell['price']
+                td
+                  =sell['amount']
+                td.hidden-xs
+                  - var total = sell['price'] * sell['amount'];
+                  =total.toFixed(8)
+  .row   
+    .col-md-12
+      .card.border-primary.mb-3
+        .card-header.bg-primary.text-white
+          h3.card-title #{settings.locale.mkt_trade_history}
+        table.table.table-hover.history-table.table-bordered(cellspacing="0")
+          thead
+            tr
+              th.hidden-xs #{settings.locale.mkt_type}
+              th #{settings.locale.mkt_amount} (#{marketdata.coin})
+              th #{settings.locale.mkt_price} (#{marketdata.exchange})
+              th #{settings.locale.mkt_total} (#{marketdata.exchange})
+              th.hidden-xs #{settings.locale.mkt_time_stamp}
+          tbody
+            each order in marketdata.data.history
+              if order.type == 'Buy'
+                tr.success
+                  td.hidden-xs
+                    =order.type
+                  td
+                    =order.volume
+                  td
+                    =order.price
+                  td
+                    - var total = order.volume * order.price;
+                    =total.toFixed(8)
+                  td.hidden-xs
+                    =order.time       
+              else
+                tr.danger 
+                  td.hidden-xs
+                    =order.type
+                  td
+                    =order.volume
+                  td
+                    =order.price
+                  td
+                    - var total = order.volume * order.price;
+                    =total.toFixed(8)
+                  td.hidden-xs
+                    =order.time
+      .footer-padding

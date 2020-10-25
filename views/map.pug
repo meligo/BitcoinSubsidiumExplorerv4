@@ -1,0 +1,141 @@
+extends layout
+
+block content
+  script.
+    $(document).ready(function(){
+      $.ajax({
+        url: '/ext/mapdata',
+        success: function(countries) {
+          $("#regoindiv").dxVectorMap({
+            bounds: [-180, 85, 180, -60],
+            tooltip: {
+                enabled: true,
+                border: {
+                    visible: false
+                },
+                font: { color: "#ffffff" },
+                customizeTooltip: function (arg) {
+                    var name = arg.attribute("name"),
+                        country = countries[name];
+                    if (country) {
+                        return { text: name + ": " + country.Node + " Nodes", color: country.color };
+                    }
+                }
+            },
+            wheelEnabled:false,
+            controlBar: {
+                enabled:true
+            },
+            background:{
+              borderColor: '#ffffff00',
+              color:'#ffffff00'
+            },
+            layers: {
+                dataSource: DevExpress.viz.map.sources.world,
+                customize: function (elements) {
+                    $.each(elements, function (_, element) {
+                        var country = countries[element.attribute("name")];
+                        if (country) {
+                            element.applySettings({
+                                color:country.color,
+                                hoveredColor: "#e0e000",
+                                selectedColor: "#008f00"
+                            });
+                        }
+                    });
+                }
+            },
+            onClick: function (e) {
+                var target = e.target;
+                if (target && countries[target.attribute("name")]) {
+                    target.selected(!target.selected());
+                }
+            }
+          });
+          var key = Object.keys(countries);
+          var tableData=[];
+          for(var i = 0; i<key.length;i++){
+            if(i<key.length-2){
+              var tdtcomb={
+                fFlag:"<img src='"+ countries[key[i]].flag+"' width='20px' >",
+                fName:"<b>"+ key[i]+"</b>",
+                fNode:"<small>"+ countries[key[i]].Node + " Node</small>",
+                sFlag:"<img src='"+ countries[key[i+1]].flag+"' width='20px' >",
+                sName:"<b>"+ key[i+1]+"</b>",
+                sNode:"<small>"+ countries[key[i+1]].Node + " Node</small>",
+                tFlag:"<img src='"+ countries[key[i+2]].flag+"' width='20px' >",
+                tName:"<b>"+ key[i+2]+"</b>",
+                tNode:"<small>"+ countries[key[i+2]].Node + " Node</small>"
+              };
+              tableData.push(tdtcomb);
+            } else if(i<key.length-1){
+              var tdocomb = {
+                fFlag:"<img src='"+ countries[key[i]].flag+"' width='20px' >",
+                fName:"<b>"+ key[i]+"</b>",
+                fNode:"<small>"+ countries[key[i]].Node + " Node</small>",
+                sFlag:"<img src='"+ countries[key[i+1]].flag+"' width='20px' >",
+                sName:"<b>"+ key[i+1]+"</b>",
+                sNode:"<small>"+ countries[key[i+1]].Node + " Node</small>",
+                tFlag:null,
+                tName:null,
+                tNode:null
+              };
+              tableData.push(tdocomb);
+              
+            } else {
+              var td = {
+                fFlag:"<img src='"+ countries[key[i]].flag+"' width='20px' >",
+                fName:"<b>"+ key[i]+"</b>",
+                fNode:"<small>"+countries[key[i]].Node + " Node</small>",
+                sFlag:null,
+                sName:null,
+                sNode:null,
+                tFlag:null,
+                tName:null,
+                tNode:null
+              };
+              tableData.push(td);
+            }
+            ++i;
+            ++i;
+          }
+          $('#map-table').dataTable({
+            data: tableData,
+            autoWidth: true,      
+            searching: false,
+            ordering: false,
+            responsive: true,
+            lengthChange: false,
+            processing: false,
+            paging: false,
+            info: false,
+            columns: [
+              { data: 'fFlag', width: '0.001%' },
+              { data: 'fName', width: '9%', className:'text-left' },
+              { data: 'fNode', width: '15%' },
+              { data: 'sFlag', width: '0.001%' },
+              { data: 'sName', width: '9%', className:'text-left' },
+              { data: 'sNode', width: '15%' },
+              { data: 'tFlag', width: '0.001%' },
+              { data: 'tName', width: '9%', className:'text-left' },
+              { data: 'tNode', width: '8%' }
+            ]
+          });
+        }
+      });
+    });
+  .col-md-12(style="margin-bottom: 4%")
+    .text-center.text-white(style='margin-bottom:15px;')
+      i #{settings.locale.net_warning}
+    .card.border-primary
+      .card-header.bg-primary.text-white
+        strong #{settings.locale.map_connection}
+      .card-body
+        .row.text-center
+          .col-md-10.offset-1
+            table#map-table
+              tbody
+            
+        .row
+          .col-md-8.offset-2
+            #regoindiv
