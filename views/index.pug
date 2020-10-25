@@ -17,43 +17,6 @@ block content
       var displayLengthMax = setting_txPerPage;
     }
     $(document).ready(function(){
-      $.ajax({
-            url: '/ext/chartdata',
-            success: function(result) {
-                AmCharts.makeChart("chartdiv", {
-                    "type": "serial",
-                    "theme": "dark",
-                    "marginRight": 80,
-                    "dataProvider": result,
-                    "valueAxes": [{
-                        "position": "left",
-                        "title": "Difficulty & netHash"
-                    }],
-                    "graphs": [{
-                        "id": "g1",
-                        "fillAlphas": 0.4,
-                        "valueField": "netHash",
-                        "balloonText": "<div style='margin:5px; font-size:19px;'>netHash(MH/s):<b> [[value]]</b></div>"
-                    },{
-                        "id": "g2",
-                        "fillAlphas": 0.4,
-                        "valueField": "powdiff",
-                        "balloonText": "<div style='margin:5px; font-size:19px;'>Diff(POW):<b> [[value]]</b></div>"
-                    }],
-
-                    "chartCursor": {
-                        "categoryBalloonDateFormat": "JJ:NN, DD MMMM",
-                        "cursorPosition": "mouse"
-                    },
-                    "categoryField": "block",
-                    "export": {
-                        "enabled": true,
-                        
-                    }
-                });
-            }
-        });
-
       var stable = $('#block-table').dataTable( {  
         autoWidth: true,      
         searching: true,
@@ -112,13 +75,73 @@ block content
         stable.api().ajax.reload(null, false);
       }, 60000 );
     });
+  script.
+    $(document).ready(function() {
+        $.ajax({
+            url: '/ext/chartdata',
+            success: function(result) {
+                AmCharts.makeChart("chartdiv", {
+                    "type": "serial",
+                    "theme": "dark",
+                    "marginRight": 80,
+                    "dataProvider": result,
+                    "valueAxes": [{
+                        "position": "left",
+                        "title": "Difficulty"
+                    }],
+                    "graphs": [{
+                        "id": "g2",
+                        "fillAlphas": 0.4,
+                        "valueField": "powdiff",
+                        "balloonText": "<div style='margin:5px; font-size:19px;'>Diff(POW):<b> [[value]]</b></div>"
+                    }],
 
-  .row
-    .offset-5.col-md-2
-      label.text-white Network Difficulty
-    .offset-5
-    .offset-1.col-md-10
-      #chartdiv
+                    "chartCursor": {
+                        "categoryBalloonDateFormat": "JJ:NN, DD MMMM",
+                        "cursorPosition": "mouse"
+                    },
+                    "categoryField": "block",
+                    "export": {
+                        "enabled": true,
+                        
+                    }
+                });
+            }
+        });
+    });
+  script.
+    $(document).ready(function() {
+        $.ajax({
+            url: '/ext/chartdata',
+            success: function(result) {
+                AmCharts.makeChart("chartdivNethash", {
+                    "type": "serial",
+                    "theme": "dark",
+                    "marginRight": 80,
+                    "dataProvider": result,
+                    "valueAxes": [{
+                        "position": "left",
+                        "title": "netHash"
+                    }],
+                    "graphs": [{
+                        "id": "g1",
+                        "fillAlphas": 0.4,
+                        "valueField": "netHash",
+                        "balloonText": "<div style='margin:5px; font-size:19px;'>netHash(MH/s):<b> [[value]]</b></div>"
+                    }],
+                    "chartCursor": {
+                        "categoryBalloonDateFormat": "JJ:NN, DD MMMM",
+                        "cursorPosition": "mouse"
+                    },
+                    "categoryField": "block",
+                    "export": {
+                        "enabled": true,
+                        
+                    }
+                });
+            }
+        });
+    });
   .row
     .col-md-12
       if error !== null        
@@ -129,7 +152,20 @@ block content
         .alert.alert-warning.alert-dismissable(role='alert')
           button.close(type='button', data-dismiss='alert') ×
           strong #{settings.locale.ex_warning} #{warning}
-  
+  .row
+    .offset-5.col-md-2
+      label.text-white Network Difficulty
+    .offset-5
+    .offset-1.col-md-10
+      #chartdiv
+    .offset-5
+  .row
+    .offset-5.col-md-2
+      label.text-white Network Hashrate
+    .offset-3
+    .offset-1.col-md-10
+      #chartdivNethash
+    .offset-5
   .col-md-12
     .card.card-default
       .card-header

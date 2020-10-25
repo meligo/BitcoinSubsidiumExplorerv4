@@ -1,0 +1,280 @@
+body {
+    padding: 80px 40px;
+    font: 14px "Nunito", sans-serif;
+}
+
+#index-search {
+    width: 80%;
+}
+
+.nav-search input {
+    width: 400px !important;
+    margin-right: 5px;
+}
+
+.view_tx {
+    text-align: center;
+}
+
+.block-last {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.block-next {
+    margin: 0;
+    margin-left: 10px;
+}
+
+#chartdiv {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 15px;
+}
+
+#chartdivNethash {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 10px;
+}
+
+#chart3 .jqplot-xaxis {
+    display: none;
+}
+
+.data {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+}
+
+.txid {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+.panel-address-summary {
+    margin-bottom: 5px;
+}
+
+/* datatable tweaks */
+table {
+    width: 100% !important;
+}
+
+.dataTables_info, .dataTables_length {
+    padding-left: 10px;
+}
+
+.dataTables_info {
+    display: hidden !important;
+}
+
+.dataTables_length {
+    padding-top: 10px;
+}
+
+.dataTables_paginate {
+    padding-right: 5px;
+}
+
+.tab-pane {
+    margin-top: 5px;
+}
+
+table a:not(.btn), .table a:not(.btn) {
+    text-decoration: none
+}
+
+tr {
+    width: 100%;
+}
+
+.footer-padding {
+    height: 50px;
+    width: 100%;
+}
+
+.summary-table {
+    margin: 0px !important;
+}
+
+#loading-icon {
+    width: 30px;
+    margin: 10px 10px;
+}
+
+.menu-text {
+    margin-left: 5px;
+}
+
+.connections {
+    position: absolute;
+    right: 15px;
+}
+
+#lblBlockcount {
+    margin-right: 10px;
+}
+
+#lblMNcount {
+    margin-right: 10px;
+}
+
+#lblMNCs {
+    margin-right: 10px;
+}
+
+#market_menu {
+    margin-bottom: 5px;
+}
+
+#website-icon {
+    font-size: 20px;
+}
+
+#github-icon {
+    font-size: 20px;
+}
+
+#bitcointalk-icon {
+    font-size: 20px;
+}
+
+#discord-icon {
+    font-size: 20px;
+}
+
+#twitter-icon {
+    font-size: 20px;
+}
+
+#facebook-icon {
+    font-size: 20px;
+}
+
+.label a:link {
+    color: #ffffff;
+}
+
+.label a:visited {
+    color: #ffffff;
+}
+
+.label a:hover {
+    color: #ffffff;
+}
+
+.label a:active {
+    color: #ffffff;
+}
+
+@media(max-width:767px) {
+    body {
+        padding: 0px;
+        padding-top: 60px;
+    }
+}
+
+@media(max-width:1096px) {
+    .nav-search input {
+        width: 300px !important;
+    }
+}
+
+@media(max-width:865px) {
+    .nav-search input {
+        width: 150px !important;
+    }
+}
+
+.qrcode {
+    position: absolute;
+    top: 65px;
+    right: 15px;
+}
+
+.footer-logo {
+    height: 40px;
+    position: absolute;
+    bottom: 0px;
+}
+
+#website-icon {
+    font-size: 20px;
+}
+
+#github-icon {
+    font-size: 20px;
+}
+
+#bitcointalk-icon {
+    font-size: 20px;
+}
+
+#discord-icon {
+    font-size: 20px;
+}
+
+#twitter-icon {
+    font-size: 20px;
+}
+
+#telegram-icon {
+    font-size: 20px;
+}
+
+#facebook-icon {
+    font-size: 20px;
+}
+
+
+.fixed-bottom {
+    padding: 0px;
+    border: 0px;
+}
+
+.fixed-top .bg-darka .nav-link:hover {
+    cursor: pointer;
+    background-color: #484848;
+}
+
+.bg-darkb {
+    padding: 0 1rem;
+    border-bottom: 0;
+}
+
+    .bg-darkb .nav-link {
+        padding: 1rem 0.5rem;
+    }
+
+.fixed-top.bg-darkb li.active .nav-link {
+    cursor: pointer;
+    background-color: #484848;
+}
+
+.fixed-bottom .bg-darka .nav-link:hover {
+    cursor: pointer;
+    background-color: #484848;
+}
+
+.fixed-bottom .nav-link {
+    padding-right: 12px !important;
+    padding-left: 12px !important;
+}
+
+.dataTables_info {
+    color: #ffffff;
+}
+
+.canvas {
+    position: fixed;
+}
+
+#can {
+    z-index: 1;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
