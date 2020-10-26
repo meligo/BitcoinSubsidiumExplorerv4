@@ -142,8 +142,12 @@ I did most of the settings already for you to be able to work with the BitcoinSu
     "port": 27017
     },
 
-    this is already set to 35 but if it's giving issues please set it back to 1
-    "block_parallel_tasks": 1, –> Set this value to 35. It’s speeds up the sync.
+    this is already set to 12 (4 core server) but if it's giving issues please set it back to 1
+    "block_parallel_tasks": 1, –> Set this value to 12. It’s speeds up the sync.
+    Best is to test this setting , stop the npm start service by control+X or control+c , change value and test
+    if the setting is too high you will see an error when you do "npm start" , means the value was too high. 
+    finding the sweet spot here will speed up the syncing.
+    Once this setting is found, do not do "npm start" anymore, but start the explorer with pm2 (install of pm2 can be found lower in the readme)
 
     "wallet": {
     "host": "localhost",
@@ -245,11 +249,12 @@ sync.js (located in scripts/) is used for updating the local databases. This scr
 ### Process Manager 2 
 
 We will make the application reboot safe and install as service. For this we’re using the “Process Manager 2” (PM2) tool.
-
+Please be aware that you can run this in a "cluster mode" with some loadbalancing, make sure how many cpu's your server has. 
+If you have 4 cpu's then it's best to task to 2 cpu's. This will speed up the syncing considerably. 
 Stop the application in your 1st terminal with "Ctrl + C" , not the syncing but the other screen -r explorer.
 
     sudo npm install -g pm2
-    sudo pm2 start bin/cluster
+    sudo pm2 start bin/cluster -i 2
     sudo env PATH=$PATH:/usr/local/bin pm2 startup
     sudo pm2 save && sudo systemctl daemon-reload && systemctl start pm2-root (root is what you see when you started the cluster , it's in the "user" tab)
 
