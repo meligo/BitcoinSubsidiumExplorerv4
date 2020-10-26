@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\lib",
+    "\\public",
+    "\\public\\stylesheets",
+    "\\views"
   ],
+  "SelectedNode": "\\lib\\database.js",
   "PreviewInSolutionExplorer": false
 }

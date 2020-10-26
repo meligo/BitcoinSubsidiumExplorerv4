@@ -29,16 +29,16 @@
   //     Lux, Materia, Minty, Pulse, Sandstone, Simplex, Sketchy, Slate, 
   //     Solar, Spacelab, Superhero, United, Yeti
   // theme (see /public/themes for available themes)
-  "theme": "Cyborg",
+  "theme": "Lumen",
 
   // port to listen for requests on.
   "port": 3001,
 
   // database settings (MongoDB)
   "dbsettings": {
-    "user": "your username",
-    "password": "your password",
-    "database": "explorerdb",
+    "user": "iquidus",
+    "password": "",
+    "database": "xbtxDB",
     "address": "localhost",
     "port": 27017
   },
@@ -46,7 +46,7 @@
   //update script settings
   "update_timeout": 10,
   "check_timeout": 250,
-  "block_parallel_tasks": 35, //default is 1 , 35 speeds up the sync
+  "block_parallel_tasks": 12, //default is 1 , 35 speeds up the sync
 
   // wallet settings
   "use_rpc": true,
@@ -54,12 +54,12 @@
   "wallet": {
     "host": "localhost",
     "port": 8766, //is default RPC port for BitcoinSubsidium
-    "username": "your username",
-    "password": "your password"
+    "username": "thisisme",
+    "password": ""
   },
 
   // confirmations
-  "confirmations": 40,
+  "confirmations": 120,
 
   // language settings
   "locale": "locale/en.json",
@@ -67,7 +67,7 @@
   // menu settings
   "display": {
     "api": true,
-    "markets": false,
+    "markets": true,
     "richlist": true,
     "twitter": false,
     "facebook": false,
@@ -106,10 +106,10 @@
   //default market is loaded by default and determines last price in header
   "markets": {
     "coin": "XBTX",
-    "exchange": "BTC",
-    "enabled": [ "bittrex" ],
+    "exchange": "TELOS",
+    "enabled": [ "birake" ],
     "ccex_key": "Get-Your-Own-Key",
-    "default": "bittrex"
+    "default": "birake"
   },
 
   // richlist/top100 settings
@@ -123,9 +123,9 @@
   // low flag: greater than this value flagged yellow
   // high flag: greater than this value flagged red
   "movement": {
-    "min_amount": 50,
-    "low_flag": 100,
-    "high_flag": 500
+    "min_amount": 100,
+    "low_flag": 1000,
+    "high_flag": 5000
   },
 
   // twitter, facebook, googleplus, youtube
@@ -157,7 +157,7 @@
   // HEAVY: retreive from heavys getsupply api call
   // BALANCES : total of all address balances
   // TXOUTSET : retreive from gettxoutsetinfo api call
-  "supply": "COINBASE",
+  "supply": "TXOUTSET",
 
   // how to acquire network hashrate
   // getnetworkhashps: uses getnetworkhashps api call, returns in GH/s
