@@ -1905,7 +1905,7 @@ pre {
     }
 
 .table-danger, .table-danger > th, .table-danger > td {
-    background-color: #ffcac7
+    background-color: #95201a
 }
 
 .table-hover .table-danger:hover {
@@ -4107,7 +4107,8 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
     .nav-tabs .nav-link {
         border: 1px solid transparent;
         border-top-left-radius: 0.25rem;
-        border-top-right-radius: 0.25rem
+        border-top-right-radius: 0.25rem;
+        background-color: #71bfdd;
     }
 
         .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
@@ -9695,7 +9696,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .table-success, .table-success > th, .table-success > td {
-    background-color: #28B62C
+    background-color: #0a700d
 }
 
 .table-info, .table-info > th, .table-info > td {
@@ -9707,7 +9708,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .table-warning, .table-warning > th, .table-warning > td {
-    background-color: #FF851B
+    background-color: #ce6306
 }
 
 .table-hover .table-success:hover, .table-hover .table-success:hover > th, .table-hover .table-success:hover > td {
