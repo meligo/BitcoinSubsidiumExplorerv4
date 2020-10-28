@@ -44,7 +44,7 @@
   },
 
   //google analytics
-  "google_code": "G-B9MKD7C6F4",
+  "google_code": "",
 
   //update script settings
   "update_timeout": 10,
