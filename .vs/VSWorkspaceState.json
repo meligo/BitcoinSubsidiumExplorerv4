@@ -3,8 +3,15 @@
     "",
     "\\lib",
     "\\public",
-    "\\public\\stylesheets",
-    "\\views"
+    "\\public\\javascripts",
+    "\\public\\javascripts\\plugins",
+    "\\public\\javascripts\\plugins\\dataloader",
+    "\\public\\vendor",
+    "\\public\\vendor\\jqplot",
+    "\\routes",
+    "\\views",
+    "\\views\\includes"
   ],
+  "SelectedNode": "\\views\\index.pug",
   "PreviewInSolutionExplorer": false
 }

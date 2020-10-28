@@ -24,6 +24,7 @@ html
     script(src='//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js')
     script(src='//cdn.datatables.net/responsive/1.0.1/js/dataTables.responsive.js')
     script(src='//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js')
+    script(async src='https://www.googletagmanager.com/gtag/js?id=' + settings.google_code)
     script(src='https://cdn3.devexpress.com/jslib/18.1.6/js/dx.all.js')
     script(src='https://cdn3.devexpress.com/jslib/18.1.6/js/vectormap-data/world.js')
     script(src='https://cdn3.devexpress.com/jslib/18.1.6/js/vectormap-data/africa.js')
@@ -43,6 +44,10 @@ html
     script.
       $(document).ready(function(){
         $('##{active}').addClass('active');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '#{settings.google_code}');
         function update_stats(){
           $.ajax({url: '/ext/summary', success: function(json){
             var supplyString = json.data[0].supply;
