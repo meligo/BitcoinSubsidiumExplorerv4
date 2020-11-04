@@ -2,15 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\lib",
-    "\\public",
+    "\\lib\\markets",
     "\\public\\themes",
     "\\public\\themes\\Lumen",
     "\\public\\vendor",
     "\\public\\vendor\\jqplot",
-    "\\routes",
-    "\\views",
-    "\\views\\includes"
+    "\\scripts",
+    "\\views"
   ],
-  "SelectedNode": "\\views\\address.pug",
   "PreviewInSolutionExplorer": false
 }

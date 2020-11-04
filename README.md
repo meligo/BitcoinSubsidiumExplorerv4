@@ -7,6 +7,7 @@ An open source block explorer written in node.js.
 
 *  [List of live explorers running Iquidus](https://github.com/iquidus/explorer/wiki/Live-Explorers)
 *  most of the information comes from https://stakeandnodes.net/iquidus-explorer-installation-guide/ , but with some tweaks I found easier 
+*  https://github.com/go140point6/pvpcoin-explorer#fix-for-length-undefined this link has some fixes that are already implemented in this code 
 
 *Note: If you would like your instance mentioned here contact me*
 
@@ -76,14 +77,18 @@ Blocks and headers will be incrementing and you can continue with the rest but b
 
 ### Install & create database
 
-Install Mongodb (I have seen many alternatives here, and this one is the only one that did not gave me any issue)
+Install Mongodb (I have seen many alternatives here, and this one is the only one that did not gave me any issue) , I have chosen to go for the latest version of mongo 4.4 currently 
 
-    sudo apt install -y mongodb
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 656408E390CFB1F5
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb.list
+    sudo apt update
+    sudo apt install mongodb-org
+    sudo systemctl enable mongod.service
+    sudo systemctl start mongod.service
 
-    After install check the service by 
+After install check the service by 
 
     sudo systemctl status mongodb
-
 
 Enter MongoDB cli:
 
